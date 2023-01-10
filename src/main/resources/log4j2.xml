@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="logFolder">/var/log/application/prompthelp</Property>
+        <Property name="LogPattern">%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LogPattern}" />
+        </Console>
+        <RollingFile name="PrompthelpLog" fileName="${logFolder}/info.log" filePattern="${LogFolder}/info-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LogPattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+            <DefaultRolloverStrategy max="15" />
+        </RollingFile>
+        <RollingFile name="PrompthelpDebugLog" fileName="${logFolder}/debug.log" filePattern="${LogFolder}/debug-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LogPattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+            <DefaultRolloverStrategy max="15" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="DebugLog" level="DEBUG" additivity="false">
+            <AppenderRef ref="PrompthelpDebugLog" />
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="PrompthelpLog" />
+        </Root>
+    </Loggers>
+</Configuration>
