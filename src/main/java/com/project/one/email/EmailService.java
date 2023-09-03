@@ -1,7 +1,7 @@
 package com.project.one.email;
 
 import com.project.one.config.EmailConfiguration;
-import com.project.one.models.request.ClientRegisterInput;
+import com.project.one.models.request.UserRegisterInput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -21,16 +21,16 @@ public class EmailService {
     @Autowired
     private EmailTemplate emailTemplate;
 
-    public void sendEmailOnUserRegistration(ClientRegisterInput clientRegisterInput) throws Exception {
-        String to = clientRegisterInput.getEmail();
+    public void sendEmailOnUserRegistration(UserRegisterInput userRegisterInput) throws Exception {
+        String to = userRegisterInput.getEmail();
         String from = "shadabeqbal2008@gmail.com"; //emailConfiguration.getAdminEmail();
-        String subject = "Email Testing "+clientRegisterInput.getName();
+        String subject = "Email Testing "+ userRegisterInput.getName();
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
         helper.setTo(to);
-        helper.setText(emailTemplate.composeUserRegisterTemplate(clientRegisterInput), true);
+        helper.setText(emailTemplate.composeUserRegisterTemplate(userRegisterInput), true);
         helper.setSubject(subject);
         helper.setFrom(from);
 

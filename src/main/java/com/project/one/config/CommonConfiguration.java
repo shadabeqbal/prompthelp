@@ -7,16 +7,14 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
-@ConfigurationProperties(prefix = "emailconfig")
+@ConfigurationProperties(prefix = "commonconfig")
 @AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
-public class EmailConfiguration {
-    private String adminEmail;
-    private String infoEmail;
-    private String contactEmail;
-    private String noReplyEmail;
-    private String promotionsEmail;
+public class CommonConfiguration {
+    private List<String> allowedEmailDomains;
 }

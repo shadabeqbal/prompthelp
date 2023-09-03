@@ -1,6 +1,6 @@
 package com.project.one.email;
 
-import com.project.one.models.request.ClientRegisterInput;
+import com.project.one.models.request.UserRegisterInput;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
 import freemarker.template.Template;
@@ -18,11 +18,11 @@ public class EmailTemplate {
     @Autowired
     private Configuration freeMarkerConfig;
 
-    public String composeUserRegisterTemplate(ClientRegisterInput clientRegisterInput) throws IOException, TemplateException{
+    public String composeUserRegisterTemplate(UserRegisterInput userRegisterInput) throws IOException, TemplateException{
         freeMarkerConfig.setClassForTemplateLoading(this.getClass(), "/templates");
         Template t;
         Model model = new BindingAwareModelMap();
-        model.addAttribute("clientRegisterInput",clientRegisterInput);
+        model.addAttribute("clientRegisterInput", userRegisterInput);
 
         t = freeMarkerConfig.getTemplate("testing.ftl");
 

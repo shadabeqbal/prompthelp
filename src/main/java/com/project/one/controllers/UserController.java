@@ -1,8 +1,8 @@
 package com.project.one.controllers;
 
-import com.project.one.models.request.ClientRegisterInput;
+import com.project.one.models.request.UserRegisterInput;
 import com.project.one.models.response.GlobalResponse;
-import com.project.one.service.ClientService;
+import com.project.one.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    ClientService clientService;
+    UserService userService;
 
     @RequestMapping(method = RequestMethod.POST,value = "/register")
-    public ResponseEntity<?> registerUser(@RequestBody ClientRegisterInput clientRegisterInput) {
-        GlobalResponse globalResponse = clientService.registerUser(clientRegisterInput);
+    public ResponseEntity<?> registerUser(@RequestBody UserRegisterInput userRegisterInput) {
+        GlobalResponse globalResponse = userService.registerUser(userRegisterInput);
         return ResponseEntity.status(globalResponse.getStatusCode()).body(globalResponse);
     }
 }

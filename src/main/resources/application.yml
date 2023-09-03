@@ -48,3 +48,11 @@ emailconfig:
   contactEmail: shadabeqbal2008@gmail.com
   noReplyEmail: shadabeqbal2008@gmail.com
   promotionsEmail: shadabeqbal2008@gmail.com
+commonconfig:
+  allowedEmailDomains:
+    - "@gmail.com"
+    - "@yahoo.com"
+    - "@outlook.com"
+    - "@live.com"
+    - "@rediffmail.com"
+    - "@apple.com"

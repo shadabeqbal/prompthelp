@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientRegisterInput {
+public class UserRegisterInput {
 
     private String name;
     private String email;
+    private String mobile;
     private String password;
 
 }
