@@ -40,7 +40,7 @@ spring:
           writetimeout: 5000
           starttls:
             enable: true
-    password: <passoword>
+    password: <password>
     username: shadabeqbal2008@gmail.com
 emailconfig:
   adminEmail: shadabeqbal2008@gmail.com
